@@ -10,7 +10,7 @@
 	cidade, uf, renda, celular,
 	telefone, cpf from pessoas where id =".$id;
 		
-	$result = mysqli_query($conexao,$sql) or die('erro');
+	$result = mysqli_query($conexao,$sql) or die();
 	$pessoa = mysqli_fetch_array($result);
 ?>
 

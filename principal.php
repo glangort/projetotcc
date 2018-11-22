@@ -1,7 +1,7 @@
 <?php require_once 'header.php'; ?>
 <?php require 'conexao.php'; ?>
 <?php
-	$sql = 'SELECT id, nome, cpf from pessoas';
+	$sql = 'SELECT idpessoas, nome, cpf from pessoas';
 	$result = mysqli_query($conexao, $sql);
 ?>
 
@@ -14,7 +14,7 @@
 	     			</div>
 			</div>
 				<div class="col-sm-6 text-right">
-			    	<a class="btn btn-primary" href="cadastro.php"><i class="fa fa-plus"></i> Novo Cliente</a>
+			    	<a class="btn btn-primary" href="cad_pessoas.php"><i class="fa fa-plus"></i> Novo Cliente</a>
 			    	<a class="btn btn-default" href="principal.php"><i class="fa fa-refresh"></i> Atualizar</a>
 			    </div>
 			</div>
@@ -35,7 +35,7 @@
 			</thead>
 	<?php
 		while ($pessoa = mysqli_fetch_array($result)) {
-			$id = $pessoa['id'];
+			$id = $pessoa['idpessoas'];
 			$nome = $pessoa['nome'];
 			$cpf = $pessoa['cpf'];
 			echo "

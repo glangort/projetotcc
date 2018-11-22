@@ -30,17 +30,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 	$qryInsert = sprintf("
 		insert into pessoas (
-		nome, cpf, datanascimento,
+		nome, cpf, data_nascimento,
 		genitor1, genitor2, endereco,
 		bairro, cep, genero,
 		cidade, uf, renda,
 		celular, telefone, rg
 		) values ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s',%s,'%s','%s', '%s')",$nome, $cpf, $datanascimento, $genitor1, $genitor2, $endereco, $bairro, $cep, $genero, $cidade, $uf, $renda, $celular, $telefone, $rg);
 
-		$result = mysqli_query($conexao,$qryInsert);
-		header("Location: cad_pessoa.php");
+		echo "$qryInsert";
 
-		echo "$result";
+		//$result = mysqli_query($conexao,$qryInsert);
+		//header("Location: principal.php");
+
+			
 }
 ?>
 
@@ -53,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
   <div class="tab-content">
     <div id="menuDados" class="tab-pane fade active in">
-          <form action="cadastro.php" method="post">
+          <form action="cad_pessoas.php" method="post">
 			  <!-- area de campos do form -->
 			  <hr />
 			  <div class="row">
@@ -194,7 +196,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 			$("#cep").mask("00.000-000")
 			$("#dataNascimento").mask("00/00/0000")
 			
-			$("#rg").mask("999.999.999-W", {
+			/*$("#rg").mask("999.999.999-W", {
 				translation: {
 					'W': {
 						pattern: /[X0-9]/
@@ -210,7 +212,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 					'S': {pattern: /[a-zA-Z0-9]/},
 					'L': {pattern: /[a-z]/},
 				}
-			}
+			}*/
 			
 			$("#codigo").mask("AA.LLL.0000", options)
 			

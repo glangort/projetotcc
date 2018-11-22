@@ -14,6 +14,6 @@ $dados = mysqli_fetch_array($result);
 
         }else{
           setcookie("login",$login);
-          header("Location:cad_pessoa.php");
+          header("Location:principal.php");
 
         }
