@@ -1,5 +1,5 @@
 <?php
-	require_once('header.php');
+
 	require ('conexao.php');
 
 	$id = $_GET['id'];
@@ -11,8 +11,6 @@
 	$result = mysqli_query($conexao,$sql) or die();
 	$pessoa = mysqli_fetch_array($result);
 ?>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <div class="container-fluid">
 	<dl class="dl-horizontal">
@@ -57,13 +55,3 @@
 		<dd><?php echo $pessoa['uf']; ?></dd>
 
 	</dl>
-
-	<div id="actions" class="row">
-		<div class="col-md-12">
-		  <a href="edit.php?id=$id" class="btn btn-primary">Editar</a>
-		  <a href="index.php" class="btn btn-default">Voltar</a>
-		  <a href="teste_rel_pessoa.php?id=$id" class="btn btn-default">Relatório</a>
-		</div>
-	</div>
-</div>
-<?php require_once 'footer.html'; ?>

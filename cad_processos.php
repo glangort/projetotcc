@@ -5,17 +5,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<?php 
+<?php
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	$numeroprocesso = $_POST["numeroprocesso"];
 	$cnj = $_POST["cnj"];
-	$dataabertura = date("Y-m-d",strtotime(str_replace('/','-',$dataabertura)));  
+	$dataabertura = $_POST["dataabertura"];
+	$dataabertura = date("Y-m-d",strtotime(str_replace('/','-',$dataabertura)));
 	$id_assuntos = $_POST["id_assuntos"];
 	$id_pessoa = $_POST["id_pessoa"];
 	$id_usuario = $_POST["id_usuario"];
 	$id_situacao = $_POST["id_situacao"];
-	
 	$qryInsert = sprintf("
 		insert into processos (
 		numeroprocesso, cnj, dataabertura,
@@ -61,11 +61,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 				</div>
 			</div>
 				<div class="row">
-					
 					<div class="col-sm-2">
 						<label for="id_situacao">Situação</label>
-						<select name="id_situacao" id="id_situacao" class="form-control" required="required"> 
-						<option value="">--Selecione--</option> 
+						<select name="id_situacao" id="id_situacao" class="form-control" required="required">
+						<option value="">--Selecione--</option>
 						<?php
 							$sql = "select idsituacao, descricao from situacao order by descricao";
 							$res = mysqli_query($conexao, $sql);
@@ -134,5 +133,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     </div>
 </div>
 
- 
+
 <?php require_once 'footer.html';  ?>

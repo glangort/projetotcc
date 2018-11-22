@@ -1,4 +1,4 @@
-<!DOCTYPE html>  
+<!DOCTYPE html>
 <?php //error_reporting(0); ?>
 <head>
     <!-- Required meta tags -->
@@ -26,8 +26,6 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li>
-     
-		
 		<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Administrador
@@ -40,7 +38,6 @@
           <a class="dropdown-item" href="#">...</a>
         </div>
       </li>
-        
     </ul>
   </div>
 </nav> 
