@@ -37,10 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		celular, telefone, rg
 		) values ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s',%s,'%s','%s', '%s')",$nome, $cpf, $datanascimento, $genitor1, $genitor2, $endereco, $bairro, $cep, $genero, $cidade, $uf, $renda, $celular, $telefone, $rg);
 
-		echo "$qryInsert";
+		//echo "$qryInsert";
 
-		//$result = mysqli_query($conexao,$qryInsert);
-		//header("Location: principal.php");
+		$result = mysqli_query($conexao,$qryInsert);
+		header("Location: principal.php");
 
 			
 }

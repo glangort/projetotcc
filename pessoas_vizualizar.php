@@ -3,11 +3,13 @@
 	require ('conexao.php');
 
 	$id = $_GET['id'];
-	$sql = "select id, nome, cpf, endereco, datanascimento,
+	$sql = "select idpessoas, nome, cpf, endereco, data_nascimento,
 	genitor1, genitor2, endereco,
 	bairro, cep, genero,
 	cidade, uf, renda, celular,
-	telefone, cpf from pessoas where id =".$id;
+	telefone, cpf from pessoas where idpessoas =".$id;
+
+	 
 	$result = mysqli_query($conexao,$sql) or die();
 	$pessoa = mysqli_fetch_array($result);
 ?>
@@ -23,7 +25,7 @@
 		<dd><?php echo $pessoa['cpf']; ?></dd>
 
 		<dt>Data de Nascimento:</dt>
-		<dd><?php echo $pessoa['datanascimento']; ?></dd>
+		<dd><?php echo $pessoa['data_nascimento']; ?></dd>
 
 		<dt>Gênero:</dt>
 		<dd><?php echo $pessoa['genero'];?></dd>
@@ -40,7 +42,7 @@
 		<dd><?php echo $pessoa['cep']; ?></dd>
 
 		<dt>Data de Cadastro:</dt>
-		<dd><?php echo $pessoa['datacadastro']; ?></dd>
+		<dd><?php echo '25/10/2018'; ?></dd>
 	</dl>
 
 	<dl class="dl-horizontal">
@@ -62,8 +64,9 @@
 		<div class="col-md-12">
 		  <a href="edit.php?id=$id" class="btn btn-primary">Editar</a>
 		  <a href="index.php" class="btn btn-default">Voltar</a>
-		  <a href="teste_rel_pessoa.php?id=$id" class="btn btn-default">Relatório</a>
+		  <a href='teste_rel_pessoa.php?id=$id' class="btn btn-default">Relatório</a>
 		</div>
 	</div>
 </div>
+
 <?php require_once 'footer.html'; ?>

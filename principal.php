@@ -1,7 +1,7 @@
 <?php require_once 'header.php'; ?>
 <?php require 'conexao.php'; ?>
 <?php
-	$sql = 'SELECT idpessoas, nome, cpf from pessoas';
+	$sql = 'SELECT idpessoas, nome, cpf, telefone from pessoas';
 	$result = mysqli_query($conexao, $sql);
 ?>
 
@@ -38,13 +38,13 @@
 			$id = $pessoa['idpessoas'];
 			$nome = $pessoa['nome'];
 			$cpf = $pessoa['cpf'];
+			$telefone = $pessoa['telefone'];
 			echo "
 				<tr>
 				<td>$id</td>
 			 	<td >$nome</td>
 				<td>$cpf</td>	
-
-				<td>00 0000-0000</td>
+				<td>$telefone</td>
 				<td>25/10/2018</td>	
 				<td class='actions text-left'>
 					<a href='pessoas_vizualizar.php?id=$id' class='btn btn-sm btn-success'><i class='fa fa-eye'></i>Visualizar</a>
