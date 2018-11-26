@@ -8,11 +8,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	$qryInsert = sprintf("insert into assunto ( assunto ) values ('%s')",$nome);
 
 		$result = mysqli_query($conexao,$qryInsert);
-		header("Location: cad_pessoas.php");
+		header("Location: principal.php");
 }
 ?>
 <div class="container-fluid">
-	<form action="cadastro.php" method="post">
+	<form action="cad_assunto.php" method="post">
 	<hr />
 		<div class="flex-row-reverse">
 			<h5>Cadastro Tipo de Movimentação</h5>
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 				<input type="text" class="form-control" name="nome" required="required">
 				<br>
 				<button type="submit" class="btn btn-primary">Salvar</button>
-				<a href="cad_pessoas.php" class="btn btn-outline-secondary">Cancelar</a>
+				<a href="principal.php" class="btn btn-outline-secondary">Cancelar</a>
 			</div>
 		
 			<div id="actions" class="row">

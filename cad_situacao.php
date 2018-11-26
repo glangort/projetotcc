@@ -12,20 +12,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 }
 ?>
 <div class="container-fluid">
-	<div class="row">
-	<div class="col-xs-6 col-sm-3 col-md-2">
-		<a href="customers/add.php" class="btn btn-primary">
-			<div class="row">
-				<div class="col-xs-12 text-center">
-					<i class="fa fa-plus fa-5x"></i>
-				</div>
-				<div class="col-xs-12 text-center">
-					<p>Novo Cliente</p>
+	<form action="cad_situacao.php" method="post">
+	<hr />
+		<div class="flex-row-reverse">
+			<h5>Cadastro Situação</h5>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-5">
+				<label for="name">Situação</label>
+				<input type="text" class="form-control" name="descricao" required="required">
+				<br>
+				<button type="submit" class="btn btn-primary">Salvar</button>
+				<a href="cad_pessoas.php" class="btn btn-outline-secondary">Cancelar</a>
+			</div>
+		
+			<div id="actions" class="row">
+				<div class="col-md-12">
+					<br>
 				</div>
 			</div>
-		</a>
-	</div>
-
+		</div>
+	</form>
 </div>
 
  

@@ -169,12 +169,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 			</form>
 	  		</div>
 
-	  <div id="menuDocumento" class="tab-pane fade">
-		  <div class="form-group"> <br>
-			<input type="file" id="exampleInputFile">
-			<p class="help-block">Adicione aqui o Documento Desejado.</p>
-  		</div>
-		  
+	<div id="menuDocumento" class="tab-pane fade">
+		<div class="col-md-12">
+		<form name="upload" enctype="multipart/form-data" method="post" action="upload.php">
+			<input type="hidden" name="MAX_FILE_SIZE" value="10485760">
+		    <input type="file" name="arquivo[]" multiple="multiple" />
+		    <button name="enviar" type="submit" class="btn btn-primary">Enviar</button>
+		</form>
+		</div>  
 	  </div>
     </div>
 </div>
@@ -191,7 +193,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		<script type="text/javascript">
 		$(document).ready(function(){
 			$("#cpf").mask("000.000.000-00")
-			$("#telefone").mask("(00) 0000-0000")
+			$("#telefone").mask("(00) 00000-0000")
+			$("#celular").mask("(00) 00000-0000")
 			$("#renda").mask("999.999.990,00", {reverse: true})
 			$("#cep").mask("00.000-000")
 			$("#dataNascimento").mask("00/00/0000")

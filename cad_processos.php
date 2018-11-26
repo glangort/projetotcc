@@ -72,8 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 								$idsituacao = $temp['idsituacao'];
 								$desc = $temp['descricao'];
 								echo "<option value='$idsituacao'>$desc</option>";
-
-								echo "$desc";
 								}?>
 						</select>
 					</div>

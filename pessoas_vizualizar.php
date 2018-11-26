@@ -12,6 +12,8 @@
 	 
 	$result = mysqli_query($conexao,$sql) or die();
 	$pessoa = mysqli_fetch_array($result);
+
+	$datanascimento = date("d/m/Y",strtotime(str_replace('-','/',$pessoa['data_nascimento'])));  
 ?>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -25,10 +27,13 @@
 		<dd><?php echo $pessoa['cpf']; ?></dd>
 
 		<dt>Data de Nascimento:</dt>
-		<dd><?php echo $pessoa['data_nascimento']; ?></dd>
+		<dd><?php echo $datanascimento; ?></dd>
 
 		<dt>Gênero:</dt>
 		<dd><?php echo $pessoa['genero'];?></dd>
+
+		<dt>Renda:</dt>
+		<dd><?php echo $pessoa['renda']; ?></dd>
 	</dl>
 
 	<dl class="dl-horizontal">
@@ -63,7 +68,7 @@
 	<div id="actions" class="row">
 		<div class="col-md-12">
 		  <a href="edit.php?id=$id" class="btn btn-primary">Editar</a>
-		  <a href="index.php" class="btn btn-default">Voltar</a>
+		  <a href="principal.php" class="btn btn-default">Voltar</a>
 		  <a href='teste_rel_pessoa.php?id=$id' class="btn btn-default">Relatório</a>
 		</div>
 	</div>
