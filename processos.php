@@ -16,7 +16,7 @@
 	     			</div>
 			</div>
 				<div class="col-sm-6 text-right">
-			    	<a class="btn btn-primary" href="cad_pessoas.php"><i class="fa fa-plus"></i> Novo Processo</a>
+			    	<a class="btn btn-primary" href="cad_processos.php"><i class="fa fa-plus"></i> Novo Processo</a>
 			    	<a class="btn btn-default" href="principal.php"><i class="fa fa-refresh"></i> Atualizar</a>
 			    </div>
 			</div>
@@ -28,8 +28,7 @@
 			<thead>
 				<tr>
 				<th>Nro. Processo</th>
-				<th width="30%">Nome</th>
-				<th>Assistido</th>
+				<th width="30%">Assistido</th>
 				<th>Data Abertura</th>
 				<th>Assunto</th>
 				<th>Opções</th>
@@ -38,19 +37,18 @@
 	<?php
 		while ($processo = mysqli_fetch_array($result)) {
 			$numeroprocesso = $processo['numero_processo'];
-			$nome = $processo['p.nome'];
-			$cpf = $processo['cpf'];
-			$telefone = $processo['telefone'];
+			$assistido = $processo['nome'];
+			$assunto = $processo['descricao'];
+			$dataabertura = $processo['data_abertura'];
 			echo "
 				<tr>
-				<td>$id</td>
-			 	<td >$nome</td>
-				<td>$cpf</td>	
-				<td>$telefone</td>
-				<td>25/10/2018</td>	
+				<td>$numeroprocesso</td>
+			 	<td >$assistido</td>
+				<td>$dataabertura</td>
+				<td>$assunto</td>	
 				<td class='actions text-left'>
-					<a href='pessoas_vizualizar.php?id=$id' class='btn btn-sm btn-success'><i class='fa fa-eye'></i>Visualizar</a>
-					<a href='edit.php' class='btn btn-sm btn-warning'><i class='fa fa-pencil'></i>Editar</a>
+					<a href='processo_vizualizar.php?id=$id' class='btn btn-sm btn-success'><i class='fa fa-eye'></i>Visualizar</a>
+					<a href='processo_editar.php' class='btn btn-sm btn-warning'><i class='fa fa-pencil'></i>Editar</a>
 				</td>
 			</tr>";
 			}

@@ -6,6 +6,19 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <?php 
+	session_start();
+	if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+	{
+		unset($_SESSION['login']);
+		unset($_SESSION['senha']);
+		header('location:index.php');
+	}
+	 
+	$usuario_login = $_SESSION['login'];
+	$usuario_id =$_SESSION['idusario'];
+	$usuario_nome = $_SESSION['nome'];
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	$nome = $_POST["nome"];

@@ -3,8 +3,20 @@
 <?php
 	$sql = 'SELECT idpessoas, nome, cpf, telefone from pessoas';
 	$result = mysqli_query($conexao, $sql);
-?>
+	
+	session_start();
+	if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+	{
+		unset($_SESSION['login']);
+		unset($_SESSION['senha']);
+		header('location:index.php');
+	}
+	 
+	$usuario_login = $_SESSION['login'];
+	$usuario_id =$_SESSION['idusario'];
+	$usuario_nome = $_SESSION['nome'];
 
+?>
 <div class="container-fluid">
 	 <header>
 		<div class="row">
