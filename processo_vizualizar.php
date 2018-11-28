@@ -1,6 +1,19 @@
 <?php
 	require_once('header.php');
 	require ('conexao.php');
+	
+	session_start();
+	if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+	{
+		unset($_SESSION['login']);
+		unset($_SESSION['senha']);
+		header('location:index.php');
+	}
+
+	$usuario_login = $_SESSION['login'];
+	$usuario_id =$_SESSION['idusario'];
+	$usuario_nome = $_SESSION['nome'];
+
 
 	$id = $_GET['id'];
 	$sql = "select * from processo where idprocesso =".$id;
@@ -114,7 +127,6 @@
 		<div class="col-md-12">
 		  <a href="edit.php?id=$id" class="btn btn-primary">Editar</a>
 		  <a href="principal.php" class="btn btn-default">Voltar</a>
-		  <a href='teste_rel_pessoa.php?id=$id' class="btn btn-default">Relatório</a>
 		</div>
 	</div>
 </div>

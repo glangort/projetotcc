@@ -1,18 +1,9 @@
 <?php require_once 'header.php'; ?>
 <?php require 'conexao.php'; ?>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/i18n/defaults-pt_BR.min.js"></script>
-
 <?php
 
 	session_start();
+
 	if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
 	{
 		unset($_SESSION['login']);
@@ -21,33 +12,37 @@
 	}
 
 	$usuario_login = $_SESSION['login'];
-	$usuario_id =$_SESSION['idusario'];
+	$usuario_id = $_SESSION['idusario'];
 	$usuario_nome = $_SESSION['nome'];
+	
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	$prazo = $_POST["prazo"];
 	$prazo = date("Y-m-d",strtotime(str_replace('/','-',$prazo)));
-
+	$id_usuario = $usuario_id;
 	$descricao = $_POST["descricao"];
 	$processo = $_POST["idprocesso"];
 
 	$tipo_movimentacao = $_POST["idtipo_movimentacao"];
 
-	$qryInsert = sprintf(" INSERT INTO movimentacao
+	$qryInsert = sprintf("insert into movimentacao
 			(data_hora, prazo, descricao,
 			processo_idprocesso, tipo_movimentacao_idtipo_movimentacao,
 			usuarios_idusuarios)
-			VALUES( Now(),'%s','%s','%s','%s','%s')", $prazo, $descricao, $processo, $tipo_movimentacao , $_SESSION['idusario']);
+			values ( Now(),'%s','%s','%s','%s','%s')", $prazo, $descricao, $processo, $tipo_movimentacao , $id_usuario);
 
-			echo "<pre>";
-			print_r($_POST);
-			echo "</pre>";
-//echo "$usuario";
-		echo "$qryInsert";
+			
 
-		//$result = mysqli_query($conexao,$qryInsert);
-		//header("Location: processos.php");
+			//echo "<pre>";
+			//print_r($_POST);
+			//echo "</pre>";
+			//echo "$usuario_id";
+			//echo "$qryInsert";
+
+		$result = mysqli_query($conexao,$qryInsert);
+		header("Location: processos.php");
 	}
 ?>
 
@@ -120,13 +115,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 <?php require_once 'footer.html';  ?>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/i18n/defaults-pt_BR.min.js"></script>
+
 <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js'></script>
     <script>
 	    $('.input-group.date').datepicker({format: "dd/mm/yyyy"});
     </script>
-
-<script>
-	$(document).ready(function() {
-  $('.selectpicker').selectpicker();
-});
-</script>

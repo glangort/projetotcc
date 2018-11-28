@@ -39,10 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	//	print_r($_POST);
 	//	echo "</pre>";
 
-	//echo "$qryInsert";
+	echo "$qryInsert";
 
-		$result = mysqli_query($conexao,$qryInsert);
-		header("Location: processos.php");
+		//$result = mysqli_query($conexao,$qryInsert);
+		//header("Location: processos.php");
 	}
 ?>
 
