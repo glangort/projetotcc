@@ -2,9 +2,22 @@
 	require_once('header.php');
 	require ('conexao.php');
 
+	session_start();
+	if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+	{
+		unset($_SESSION['login']);
+		unset($_SESSION['senha']);
+		header('location:index.php');
+	}
+	 
+	$usuario_login = $_SESSION['login'];
+	$usuario_id =$_SESSION['idusario'];
+	$usuario_nome = $_SESSION['nome'];
+	
+
 	$id = $_GET['id'];
 	$sql = "select idpessoas, nome, cpf, endereco, data_nascimento,
-	genitor1, genitor2, endereco,
+	genitor1, genitor2, endereco, rg,
 	bairro, cep, genero,
 	cidade, uf, renda, celular,
 	telefone, cpf from pessoas where idpessoas =".$id;
@@ -26,6 +39,9 @@
 		<dt>CPF:</dt>
 		<dd><?php echo $pessoa['cpf']; ?></dd>
 
+		<dt>RG:</dt>
+		<dd><?php echo $pessoa['rg']; ?></dd>
+
 		<dt>Data de Nascimento:</dt>
 		<dd><?php echo $datanascimento; ?></dd>
 
@@ -46,13 +62,18 @@
 		<dt>CEP:</dt>
 		<dd><?php echo $pessoa['cep']; ?></dd>
 
-		<dt>Data de Cadastro:</dt>
-		<dd><?php echo '25/10/2018'; ?></dd>
+		<dt>Cidade:</dt>
+		<dd><?php echo $pessoa['cidade']; ?></dd>
+
+		
 	</dl>
 
 	<dl class="dl-horizontal">
-		<dt>Cidade:</dt>
-		<dd><?php echo $pessoa['cidade']; ?></dd>
+
+		<dt>Data de Cadastro:</dt>
+		<dd><?php echo '25/10/2018'; ?></dd>
+
+		
 
 		<dt>Telefone:</dt>
 		<dd><?php echo $pessoa['telefone']; ?></dd>
@@ -65,13 +86,14 @@
 
 	</dl>
 
-	<div id="actions" class="row">
-		<div class="col-md-12">
-		  <a href="edit.php?id=$id" class="btn btn-primary">Editar</a>
-		  <a href="principal.php" class="btn btn-default">Voltar</a>
-		  <a href='teste_rel_pessoa.php?id=$id' class="btn btn-default">Relatório</a>
+<?php  echo "
+	<div id='actions' class='row'>
+		<div class=	'col-md-12'>
+		  <a href='edit.php?id=$id' class='btn btn-primary'>Editar</a>
+		  <a href='principal.php' class='btn btn-default'>Voltar</a>
+		  <a href='relatorio_pessoa.php?id=$id' class='btn btn-default btn-success'><i class='fa fa-eye'></i>Gerar PDF</a>
 		</div>
 	</div>
-</div>
+</div>  "?>;
 
 <?php require_once 'footer.html'; ?>

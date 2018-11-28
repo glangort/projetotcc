@@ -1,0 +1,6 @@
+{
+    "require": {
+        "geekcom/phpjasper": "^2.7",
+        "setasign/fpdf": "1.8.1"
+    }
+}

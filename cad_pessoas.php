@@ -47,8 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		genitor1, genitor2, endereco,
 		bairro, cep, genero,
 		cidade, uf, renda,
-		celular, telefone, rg
-		) values ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s',%s,'%s','%s', '%s')",$nome, $cpf, $datanascimento, $genitor1, $genitor2, $endereco, $bairro, $cep, $genero, $cidade, $uf, $renda, $celular, $telefone, $rg);
+		celular, telefone, rg, data_atualizacao
+		) values ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s',%s,'%s','%s', '%s', Now() )",$nome, $cpf, $datanascimento, $genitor1, $genitor2, $endereco, $bairro, $cep, $genero, $cidade, $uf, $renda, $celular, $telefone, $rg);
 
 		//echo "$qryInsert";
 

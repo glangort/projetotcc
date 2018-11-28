@@ -1,10 +1,26 @@
 <?php require_once 'header.php'; ?>
 <?php require 'conexao.php'; ?>
 <?php
-	$sql = 'SELECT numero_processo, p.nome ,data_abertura, a.descricao from processo
+	session_start();
+	if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+	{
+		unset($_SESSION['login']);
+		unset($_SESSION['senha']);
+		header('location:index.php');
+	}
+	 
+	$usuario_login = $_SESSION['login'];
+	$usuario_id =$_SESSION['idusario'];
+	$usuario_nome = $_SESSION['nome'];	
+
+
+	$sql = 'SELECT idprocesso, numero_processo, p.nome ,data_abertura, a.descricao from processo
 			inner join pessoas p on ( pessoas_idpessoas = p.idpessoas )
 			inner join assuntos a on ( assuntos_idassuntos = a.idassuntos )';
 	$result = mysqli_query($conexao, $sql);
+
+
+
 ?>
 
 <div class="container-fluid">
@@ -39,7 +55,8 @@
 			$numeroprocesso = $processo['numero_processo'];
 			$assistido = $processo['nome'];
 			$assunto = $processo['descricao'];
-			$dataabertura = $processo['data_abertura'];
+			$dataabertura = date("d/m/Y",strtotime(str_replace('-','/',$processo['data_abertura'])));
+			$id = $processo['idprocesso'];
 			echo "
 				<tr>
 				<td>$numeroprocesso</td>

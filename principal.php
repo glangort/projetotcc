@@ -1,7 +1,8 @@
 <?php require_once 'header.php'; ?>
 <?php require 'conexao.php'; ?>
+<?php include 'modal.php' ?>
 <?php
-	$sql = 'SELECT idpessoas, nome, cpf, telefone from pessoas';
+	$sql = 'SELECT idpessoas, nome, cpf, telefone,data_atualizacao from pessoas';
 	$result = mysqli_query($conexao, $sql);
 	
 	session_start();
@@ -28,6 +29,7 @@
 				<div class="col-sm-6 text-right">
 			    	<a class="btn btn-primary" href="cad_pessoas.php"><i class="fa fa-plus"></i> Novo Cliente</a>
 			    	<a class="btn btn-default" href="principal.php"><i class="fa fa-refresh"></i> Atualizar</a>
+
 			    </div>
 			</div>
 		</header>
@@ -51,16 +53,19 @@
 			$nome = $pessoa['nome'];
 			$cpf = $pessoa['cpf'];
 			$telefone = $pessoa['telefone'];
+			$dataatualizacao = date("d/m/Y",strtotime(str_replace('-','/',$pessoa['data_atualizacao'])));  
+
 			echo "
 				<tr>
 				<td>$id</td>
 			 	<td >$nome</td>
 				<td>$cpf</td>	
 				<td>$telefone</td>
-				<td>25/10/2018</td>	
+				<td>$dataatualizacao</td>	
 				<td class='actions text-left'>
 					<a href='pessoas_vizualizar.php?id=$id' class='btn btn-sm btn-success'><i class='fa fa-eye'></i>Visualizar</a>
-					<a href='edit.php' class='btn btn-sm btn-warning'><i class='fa fa-pencil'></i>Editar</a>
+					<a href='pessoas_editar.php?id=$id' class='btn btn-sm btn-warning'><i class='fa fa-pencil'></i>Editar</a>
+					<a href='#'' class='btn btn-sm btn-danger' data-toggle='modal' data-target='#delete-modal' data-customer='$id'<i class='fa fa-trash'></i> Desativar </a>
 				</td>
 			</tr>";
 			}
@@ -93,6 +98,22 @@ function myFunction() {
     } 
   }
 }
+</script>
+
+<script>
+	/**
+ * Passa os dados do cliente para o Modal, e atualiza o link para exclusão
+ */
+
+$('#delete-modal').on('show.bs.modal', function (event) {
+  
+  var button = $(event.relatedTarget);
+  var id = button.data('customer');
+  
+  var modal = $(this);
+  modal.find('.modal-title').text('Excluir Cliente #' + id);
+  modal.find('#confirm').attr('href', 'delete.php?id=' + id);
+})
 </script>
 
 <?php require_once 'footer.html'; ?>

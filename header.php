@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php //error_reporting(0); ?>
+<?php error_reporting(0); ?>
 <head>
     <!-- Required meta tags -->
     <html lang="pt-br">
