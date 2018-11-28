@@ -17,12 +17,11 @@
 	cidade, uf, renda, celular,
 	telefone, cpf from pessoas where idpessoas = ".$id ;
 
-	 
 	$result = mysqli_query($conexao,$sql) or die();
 
 	$pessoa = mysqli_fetch_assoc($result);
 
-	$datanascimento = date("d/m/Y",strtotime(str_replace('-','/',$pessoa['data_nascimento'])));  
+	$datanascimento = date("d/m/Y",strtotime(str_replace('-','/',$pessoa['data_nascimento'])));
 	$html = '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">';
 
 		$html .= '<div class="container-fluid">';
@@ -38,7 +37,7 @@
 
 		$html .= '<b>CEP: </b>' . $pessoa['cep'] . '<br>';
 		$html .= '<b>Data de Cadastro: </b>25/10/2018 <br>';
-		
+
 		$html .= '<b>Cidade: </b>' . $pessoa['cidade']. '<br>';
 
 		$html .= '<b>Telefone: </b>' . $pessoa['telefone']. '<br>';
@@ -46,16 +45,14 @@
 		$html .= '<b>Celular: </b>' . $pessoa['celular']. '<br>';
 		$html .= '<b>UF: </b>'. $pessoa['uf']. '<br>';
 		$html .= '</div>';
-		
-		// include autoloader
-	//equire_once("dompdf/autoload.inc.php");
+
 
 	//referenciar o DomPDF com namespace
 	use Dompdf\Dompdf;
 
 	//Criando a Instancia
 	$dompdf = new DOMPDF();
-	
+
 	// Carrega seu HTML
 	$dompdf->load_html('
 			<h2 style="text-align: center;">Relatorio Pessoas Detalhado</h2><hr/>

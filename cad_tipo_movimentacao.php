@@ -1,18 +1,18 @@
 <?php require_once 'header.php'; ?>
 <?php require 'conexao.php'; ?>
-	
-<?php 
+
+<?php
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	$nome = $_POST["nome"];
 	$qryInsert = sprintf("insert into tipo_movimentacao ( tipo ) values ('%s')",$nome);
 
 		$result = mysqli_query($conexao,$qryInsert);
-		header("Location: cad_pessoas.php");
+		header("Location: principal.php");
 }
 ?>
 <div class="container-fluid">
-	<form action="cadastro.php" method="post">
+	<form action="cad_tipo_movimentacao.php" method="post">
 	<hr />
 		<div class="flex-row-reverse">
 			<h5>Cadastro Tipo de Movimentação</h5>
@@ -23,9 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 				<input type="text" class="form-control" name="nome" required="required">
 				<br>
 				<button type="submit" class="btn btn-primary">Salvar</button>
-				<a href="cad_pessoas.php" class="btn btn-outline-secondary">Cancelar</a>
+				<a href="principal.php" class="btn btn-outline-secondary">Cancelar</a>
 			</div>
-		
+
 			<div id="actions" class="row">
 				<div class="col-md-12">
 					<br>
@@ -35,5 +35,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	</form>
 </div>
 
- 
+
 <?php require_once 'footer.html';  ?>
