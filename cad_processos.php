@@ -33,16 +33,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		insert into processo (
 		numero_processo, cnj, data_abertura, 
 		assuntos_idassuntos, pessoas_idpessoas, 
-		comarca, situacao_idsituacao, usuarios_idusuarios, ) values ('%s','%s','%s','%s','%s','%s','%s','%s')",$numeroprocesso, $cnj, $dataabertura, $id_assuntos, $id_pessoa, $comarca ,$id_situacao, $id_usuario);
+		comarca, situacao_idsituacao, usuarios_idusuarios ) values ('%s','%s','%s','%s','%s','%s','%s','%s')",$numeroprocesso, $cnj, $dataabertura, $id_assuntos, $id_pessoa, $comarca ,$id_situacao, $id_usuario);
 
 		//echo "<pre>";
 	//	print_r($_POST);
 	//	echo "</pre>";
 
-	echo "$qryInsert";
+	//echo "$qryInsert";
 
-		//$result = mysqli_query($conexao,$qryInsert);
-		//header("Location: processos.php");
+		$result = mysqli_query($conexao,$qryInsert);
+		header("Location: processos.php");
 	}
 ?>
 

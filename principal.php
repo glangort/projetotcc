@@ -20,6 +20,7 @@
 ?>
 <div class="container-fluid">
 	 <header>
+	 	<hr>
 		<div class="row">
 			<div class="align-self-lg-auto col-sm-6">
 	     			<div class="input-group-prepend">

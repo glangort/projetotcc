@@ -172,25 +172,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 					  <input type="text" class="form-control" name="renda" id="renda">
 					</div>
 				</div>
-
-			  <div id="actions" class="row">
-				<div class="col-md-12">
-				  <button type="submit" class="btn btn-primary">Salvar</button>
-				  <a href="index.php" class="btn btn-default">Cancelar</a>
-				</div>
-			  </div>
 			</form>
 	  		</div>
 
 	<div id="menuDocumento" class="tab-pane fade">
-		<div class="col-md-12">
 		<form name="upload" enctype="multipart/form-data" method="post" action="upload.php">
 			<input type="hidden" name="MAX_FILE_SIZE" value="10485760">
 		    <input type="file" name="arquivo[]" multiple="multiple" />
-		    <button name="enviar" type="submit" class="btn btn-primary">Enviar</button>
+		    <input name="enviar" type="submit" value="Enviar">
 		</form>
-		</div>  
 	  </div>
+	  <div id="actions" class="row">
+				<div class="col-md-12">
+				  <button type="submit" class="btn btn-primary">Salvar</button>
+				  <a href="principal.php" class="btn btn-default">Cancelar</a>
+				</div>
+			  </div>
     </div>
 </div>
 

@@ -25,20 +25,22 @@
 
 <div class="container-fluid">
 	 <header>
+	 	<hr>
 		<div class="row">
 			<div class="align-self-lg-auto col-sm-6">
 	     			<div class="input-group-prepend">
 	       			<input id="myInput" onkeyup="myFunction()" placeholder="Consultar" type="text" class="form-control">
 	     			</div>
 			</div>
+
 				<div class="col-sm-6 text-right">
 			    	<a class="btn btn-primary" href="cad_processos.php"><i class="fa fa-plus"></i> Novo Processo</a>
-			    	<a class="btn btn-default" href="principal.php"><i class="fa fa-refresh"></i> Atualizar</a>
+			    	<a class="btn btn-default" href="processos.php"><i class="fa fa-refresh"></i> Atualizar</a>
 			    </div>
 			</div>
 		</header>
-
-	<hr>
+<hr>
+	
 	<body>
 		<table id="myTable" class="table table-hover">
 			<thead>

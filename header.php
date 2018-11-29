@@ -45,7 +45,7 @@
 
     <title>NPJ - IDEAU</title>
 	  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="principal.php">Pagina Inicial</a>
+    <a class="navbar-brand" href="principal.php">Pessoas</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -64,7 +64,6 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="dropMov">
           <a class="dropdown-item" href="cad_movimentacao.php">Lançar Movimentação</a>
-          <a class="dropdown-item" href="#">Consultar Movimentação</a>
         </div>
       </li>
 
@@ -73,9 +72,9 @@
           Administrador
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="cad_tipo_movimentacao.php">Cadastro Tipo de Movimentação</a>
-          <a class="dropdown-item" href="cad_assunto.php">Cadastro de Assuntos Processuais</a>
-          <a class="dropdown-item" href="cad_situacao.php">Cadastro de Situação</a>
+          <a class="dropdown-item" href="cad_tipo_movimentacao.php">Tipos de Movimentação</a>
+          <a class="dropdown-item" href="cad_assunto.php">Assuntos Processuais</a>
+          <a class="dropdown-item" href="cad_situacao.php">Situações</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">...</a>
         </div>
@@ -87,7 +86,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="dropRel">
           <a class="dropdown-item" href="#">Lista de Pessoas</a>
-          <a class="dropdown-item" href="#">Processos</a>
+          <a class="dropdown-item" href="#">Lista de Processos</a>
         </div>
       </li>
 

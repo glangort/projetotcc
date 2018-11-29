@@ -16,10 +16,13 @@
 
 
 	$id = $_GET['id'];
-	$sql = "select * from processo where idprocesso =".$id;
+	$sql = "SELECT idprocesso, numero_processo, p.nome ,data_abertura, a.descricao, s.descricao as situacao,comarca, cnj from processo
+			inner join pessoas p on ( pessoas_idpessoas = p.idpessoas )
+			inner join assuntos a on ( assuntos_idassuntos = a.idassuntos )
+			inner join situacao s on ( situacao_idsituacao = s.idsituacao ) where idprocesso = ".$id;
 
 	$result = mysqli_query($conexao,$sql) or die();
-	$pessoa = mysqli_fetch_array($result);
+	$processo = mysqli_fetch_array($result);
 
 	//echo "<pre>";
 	//print_r($pessoa);
@@ -32,7 +35,7 @@
 	$resultmovimentacao = mysqli_query($conexao,$sqlmovimentacao) or die();
 
 
-	$datanascimento = date("d/m/Y",strtotime(str_replace('-','/',$pessoa['data_nascimento'])));
+	$data_processo = date("d/m/Y",strtotime(str_replace('-','/',$processo['data_abertura'])));
 ?>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -48,50 +51,29 @@
   <div class="tab-content">
     <div id="menuDados" class="tab-pane fade active in">
 	<div class="container-fluid">
+		<br>
 		<dl class="dl-horizontal">
-			<dt>Nome:</dt>
-			<dd><?php echo $pessoa['']; ?></dd>
+			<dt>Numero do Processo:</dt>
+			<dd><?php echo $processo['numero_processo']; ?></dd>
 
-			<dt>CPF:</dt>
-			<dd><?php echo $pessoa['cpf']; ?></dd>
+			<dt>CNJ:</dt>
+			<dd><?php echo $processo['cnj']; ?></dd>
 
-			<dt>Data de Nascimento:</dt>
-			<dd><?php echo $datanascimento; ?></dd>
+			<dt>Assistido:</dt>
+			<dd><?php echo $processo['nome']; ?></dd>
 
-			<dt>Gênero:</dt>
-			<dd><?php echo $pessoa['genero'];?></dd>
+			<dt>Data de Abertura:</dt>
+			<dd><?php echo $data_processo; ?></dd>
 
-			<dt>Renda:</dt>
-			<dd><?php echo $pessoa['renda']; ?></dd>
-		</dl>
+			<dt>Assunto:</dt>
+			<dd><?php echo $processo['descricao'];?></dd>
 
-		<dl class="dl-horizontal">
-			<dt>Endereço:</dt>
-			<dd><?php echo $pessoa['endereco']; ?></dd>
+			<dt>Comarca:</dt>
+			<dd><?php echo $processo['comarca']; ?></dd>
 
-			<dt>Bairro:</dt>
-			<dd><?php echo $pessoa['bairro']; ?></dd>
-
-			<dt>CEP:</dt>
-			<dd><?php echo $pessoa['cep']; ?></dd>
-
-			<dt>Data de Cadastro:</dt>
-			<dd><?php echo '25/10/2018'; ?></dd>
-		</dl>
-
-		<dl class="dl-horizontal">
-			<dt>Cidade:</dt>
-			<dd><?php echo $pessoa['cidade']; ?></dd>
-
-			<dt>Telefone:</dt>
-			<dd><?php echo $pessoa['telefone']; ?></dd>
-
-			<dt>Celular:</dt>
-			<dd><?php echo $pessoa['celular']; ?></dd>
-
-			<dt>UF:</dt>
-			<dd><?php echo $pessoa['uf']; ?></dd>
-
+			<dt>Situação:</dt>
+			<dd><?php echo $processo['situacao']; ?></dd>
+			
 		</dl>
 		</div>
 	</div>
@@ -108,6 +90,7 @@
 					 	$idprocesso =  $movimentacao['tipo'];
 					 	$descricao = $movimentacao['descricao'];
 					 	$data = $movimentacao['data_hora'];
+					 	$data = date("d/m/Y H:i:s", strtotime($data));
 
 					 	echo "
 						<li>
