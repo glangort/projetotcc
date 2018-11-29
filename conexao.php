@@ -1,6 +1,6 @@
 <?php
 
-	$conexao = mysqli_connect("127.0.0.1", "root", "mysql", "dbProjeto");
+	$conexao = mysqli_connect("192.168.11.80", "root", "mysql", "dbProjeto");
 	mysqli_query($conexao, "SET character_set_results=utf8");
 	mysqli_query($conexao, "SET character_set_connection=utf8");
 	mysqli_query($conexao, "SET character_set_client=utf8");
